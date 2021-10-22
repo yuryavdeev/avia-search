@@ -1,0 +1,38 @@
+.cards-area {
+    margin: 30px 20px 60px;
+    width: calc(75% - 40px);
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.cards-area__message {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.1;
+    margin: 0 auto;
+}
+
+.cards-area__flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-area__button {
+    width: 35%;
+    height: 30px;
+    margin: auto;
+    background-color: rgb(221, 221, 221);
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.1;
+    cursor: pointer;
+}
+
+.cards-area__button:hover {
+    opacity: .7;
+    transition: opacity linear 0.3s;
+}
