@@ -44,35 +44,35 @@ const App = () => {
 
 
   // // фильтр по сегментам (<= пересадки - есть/нет)
-  // React.useEffect(() => {
-  //   formData.hasTransfer && !formData.directFlight ?
-  //     setFilteredList(
-  //       listForRender.filter(card =>
-  //         card.flight.legs[0].segments.length > 1
-  //       )
-  //     )
-  //     :
-  //     !formData.hasTransfer && formData.directFlight ?
-  //       setFilteredList(
-  //         listForRender.filter(card =>
-  //           card.flight.legs[0].segments.length === 1
-  //         )
-  //       )
-  //       :
-  //       setFilteredList([])
-  // }, [formData.hasTransfer, formData.directFlight, listForRender])
-  
-
-  // фильтр по сегментам (<= пересадки - есть/нет)
   React.useEffect(() => {
     formData.hasTransfer && !formData.directFlight ?
-      console.log('formData.hasTransfer')
+      setFilteredList(
+        listForRender.filter(card =>
+          card.flight.legs[0].segments.length > 1
+        )
+      )
       :
       !formData.hasTransfer && formData.directFlight ?
-        console.log('formData.directFlight')
+        setFilteredList(
+          listForRender.filter(card =>
+            card.flight.legs[0].segments.length === 1
+          )
+        )
         :
-        console.log('[empty]')
+        setFilteredList([])
   }, [formData.hasTransfer, formData.directFlight, listForRender])
+
+
+  // фильтр по сегментам (<= пересадки - есть/нет)
+  // React.useEffect(() => {
+  //   formData.hasTransfer && !formData.directFlight ?
+  //     console.log('formData.hasTransfer')
+  //     :
+  //     !formData.hasTransfer && formData.directFlight ?
+  //       console.log('formData.directFlight')
+  //       :
+  //       console.log('[empty]')
+  // }, [formData.hasTransfer, formData.directFlight, listForRender])
 
 
   // получение списка перевозчиков с ценами
