@@ -1,8 +1,8 @@
-import React from 'react';
-import './Card.css';
+import React from 'react'
+import './Card.css'
 import logo from '../../utils/logo.svg'
-import { config } from '../../utils/conf';
-import { DateTime } from "luxon";
+import { config } from '../../utils/conf'
+import { DateTime } from "luxon"
 
 
 const Card = React.memo(({ card }) => {
@@ -10,7 +10,7 @@ const Card = React.memo(({ card }) => {
   const segments = card.flight.legs[0].segments.length
   const segmentsBack = card.flight.legs[1].segments.length
 
-  const airline = card.flight.legs[0].segments[0].airline.caption
+  const airline = card.flight.carrier.caption
   const airlineBack = card.flight.legs[1].segments[0].airline.caption
 
   const departureDate = card.flight.legs[0].segments[0].departureDate
@@ -97,9 +97,9 @@ const Card = React.memo(({ card }) => {
         <li className="card__list-item">
           <p className="card__list-flight">
             {departureCity + ', ' + departureAirport}
-            <span className="card__airport-id">{departureAirportId} &#10230;</span>
+            <span className="card__airport-id">({departureAirportId}) &#10230;</span>
             {arrivalCity ? (arrivalCity + ', ' + arrivalAirport) : arrivalAirport}
-            <span className="card__airport-id">{arrivalAirportId}</span>
+            <span className="card__airport-id">({arrivalAirportId})</span>
           </p>
           <div className="card__list-container">
             <p className="card__list-time">{timeOfStart}</p>
@@ -129,9 +129,9 @@ const Card = React.memo(({ card }) => {
         <li className="card__list-item">
           <p className="card__list-flight">
             {departureCityBack ? (departureCityBack + ', ' + departureAirportBack) : departureAirportBack}
-            <span className="card__airport-id">{departureAirportIdBack} &#10230;</span>
+            <span className="card__airport-id">({departureAirportIdBack}) &#10230;</span>
             {arrivalCityBack + ', ' + arrivalAirportBack}
-            <span className="card__airport-id">{arrivalAirportIdBack}</span>
+            <span className="card__airport-id">({arrivalAirportIdBack})</span>
           </p>
           <div className="card__list-container">
             <p className="card__list-time">{timeOfStartBack}</p>
@@ -162,7 +162,7 @@ const Card = React.memo(({ card }) => {
       <button className="card__button" onClick={handleClickButtonOfCard}>ВЫБРАТЬ</button>
 
     </div>
-  );
+  )
 })
 
-export default Card;
+export default Card
