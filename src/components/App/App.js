@@ -9,152 +9,112 @@ const App = () => {
 
   const mainList = flightsList.result.flights
   const [listForRender, setListForRender] = React.useState([])
-  const [filteredList, setFilteredList] = React.useState([])
-  const [formData, setFormData] = React.useState({})
   const [message, setMessage] = React.useState('')
-  const [airlinesList, setAirlinesList] = React.useState({})
-  const [airlinesChecked, setAirlinesChecked] = React.useState([])
+
+  const [sort, setSort] = React.useState('')
+  const [transferFlight, setTransferFlight] = React.useState(false)
+  const [directFlight, setDirectFlight] = React.useState(false)
+  const [priceFrom, setPriceFrom] = React.useState()
+  const [priceBefore, setPriceBefore] = React.useState()
+
+  const [airlinesFoundList, setAirlinesFoundList] = React.useState({})
+  const [airlinesCheckedList, setAirlinesCheckedList] = React.useState([])
 
 
-
-  // фильтр по цене
   React.useEffect(() => {
-    if (formData.priceFrom || formData.priceBefore) {
-      const temporaryList = mainList.filter(card =>
-        formData.priceFrom && formData.priceBefore ?
-          card.flight.price.total.amount < Number(formData.priceBefore) && card.flight.price.total.amount > Number(formData.priceFrom)
-          :
-          formData.priceFrom && !formData.priceBefore ?
-            card.flight.price.total.amount > Number(formData.priceFrom)
-            :
-            !formData.priceFrom && formData.priceBefore &&
-            card.flight.price.total.amount < Number(formData.priceBefore)
-      )
-      if (temporaryList.length) {
-        setListForRender(temporaryList)
-      } else {
-        setListForRender([])
-        setMessage("Ничего не найдено")
-      }
-    }
-    else {
-      setListForRender(mainList)
-    }
-  }, [formData.priceBefore, formData.priceFrom, mainList])
+    let temporaryArray = []
 
-
-  // // фильтр по сегментам (<= пересадки - есть/нет)
-  React.useEffect(() => {
-    formData.hasTransfer && !formData.directFlight ?
-      setFilteredList(
-        listForRender.filter(card =>
-          card.flight.legs[0].segments.length > 1
-        )
-      )
-      :
-      !formData.hasTransfer && formData.directFlight ?
-        setFilteredList(
-          listForRender.filter(card =>
-            card.flight.legs[0].segments.length === 1
-          )
-        )
+    // фильтр по цене (и установка начального списка для отрисовки <= нет условия)
+    temporaryArray = mainList.filter(card =>
+      priceFrom && priceBefore ?
+        card.flight.price.total.amount < Number(priceBefore) && card.flight.price.total.amount > Number(priceFrom)
         :
-        setFilteredList([])
-  }, [formData.hasTransfer, formData.directFlight, listForRender])
+        priceFrom && !priceBefore ?
+          card.flight.price.total.amount > Number(priceFrom)
+          :
+          !priceFrom && priceBefore ?
+            card.flight.price.total.amount < Number(priceBefore)
+            :
+            card
+    )
 
-
-  // фильтр по сегментам (<= пересадки - есть/нет)
-  // React.useEffect(() => {
-  //   formData.hasTransfer && !formData.directFlight ?
-  //     console.log('formData.hasTransfer')
-  //     :
-  //     !formData.hasTransfer && formData.directFlight ?
-  //       console.log('formData.directFlight')
-  //       :
-  //       console.log('[empty]')
-  // }, [formData.hasTransfer, formData.directFlight, listForRender])
-
-
-  // получение списка перевозчиков с ценами
-  React.useEffect(() => {
-    let temporaryObj = {}
-    let sortedList = []
-
-    filteredList.length ?
-      sortedList = filteredList.sort(function (cardLeft, cardRight) {
-        if (Number(cardLeft.flight.price.total.amount) < Number(cardRight.flight.price.total.amount)) {
-          return 1
-        } if (Number(cardLeft.flight.price.total.amount) > Number(cardRight.flight.price.total.amount)) {
-          return -1
-        }
-        return 0
-      })
-      :
-      sortedList = listForRender.sort(function (cardLeft, cardRight) {
-        if (Number(cardLeft.flight.price.total.amount) < Number(cardRight.flight.price.total.amount)) {
-          return 1
-        } if (Number(cardLeft.flight.price.total.amount) > Number(cardRight.flight.price.total.amount)) {
-          return -1
-        }
-        return 0
-      })
-
-    if (sortedList.length) {
-      sortedList.map(card =>
-        temporaryObj = { ...temporaryObj, [card.flight.carrier.caption]: card.flight.price.total.amount }
+    // фильтр по сегментам (пересадки - есть/нет)
+    if (transferFlight || directFlight) {
+      temporaryArray = temporaryArray.filter(card =>
+        transferFlight && !directFlight ?
+          card.flight.legs[0].segments.length > 1
+          :
+          !transferFlight && directFlight ?
+            card.flight.legs[0].segments.length === 1
+            :
+            card
       )
-      setAirlinesList(temporaryObj)
-    } else {
-      setAirlinesList({})
     }
-  }, [filteredList, listForRender])
 
-
-  // console.log(airlinesList)
-
-
-  // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  // React.useEffect(() => {
-  //   airlinesList.length ?
-  //     setUniqueAirlinesList([...new Set(airlinesList)])
-  //     :
-  //     setUniqueAirlinesList([])
-  // }, [airlinesList])
-
-
-  const handleSearchForm = (values, airlinesArr) => {
-    setMessage('')
-    if (Object.keys(values).length) {
-      setFormData(values)
-      setAirlinesChecked(airlinesArr)
+    // фильтр по авиакомпаниям
+    if (airlinesCheckedList.length) {
+      temporaryArray = temporaryArray.filter(card =>
+        airlinesCheckedList.includes(card.flight.carrier.caption)
+      )
     }
+
+    setListForRender(temporaryArray)
+  }, [mainList, priceBefore, priceFrom, transferFlight, directFlight, airlinesCheckedList])
+
+
+  // переключатель сообщения
+  React.useEffect(() => {
+    listForRender.length ?
+      setMessage('')
+      :
+      setMessage('Ничего не найдено')
+  }, [listForRender])
+
+  const [airlinesFoundListSort, setAirlinesFoundListSort] = React.useState({})
+
+  // получение списка перевозчиков с ценами (для отрисовки в SearchArea)
+  React.useEffect(() => {
+    let temporaryObject = {}
+
+    // сортировка <= получить мин. цену в объект
+    mainList.sort((cardLeft, cardRight) =>
+      Number(cardRight.flight.price.total.amount) - Number(cardLeft.flight.price.total.amount)
+    ).map(card =>
+      temporaryObject = { ...temporaryObject, [card.flight.carrier.caption]: card.flight.price.total.amount }
+    )
+
+    // в объект а/к: цена (без сортировки)
+    setAirlinesFoundList(temporaryObject)
+    // в массив отсортированные по цене а/к
+    setAirlinesFoundListSort(Object.keys(temporaryObject).sort((a, b) => temporaryObject[a] - temporaryObject[b]))
+  }, [mainList])
+
+
+  const handleSearchForm = (formValues, selectedAirlines) => {
+    if (Object.keys(formValues).length) {
+      formValues.sort && setSort(formValues.sort)
+      formValues.transferFlight === undefined ? setTransferFlight(false) : setTransferFlight(formValues.transferFlight)
+      formValues.directFlight === undefined ? setDirectFlight(false) : setDirectFlight(formValues.directFlight)
+      setPriceFrom(formValues.priceFrom)
+      setPriceBefore(formValues.priceBefore)
+    }
+    setAirlinesCheckedList(selectedAirlines)
   }
 
-
-  console.log(airlinesChecked)
-  console.log(formData) // <<<<<<<<<<<<<<<<<<<<<<<<<<
-  // console.log(filteredList) // <<<<<<<<<<<<<<<<<<<<<<<<
-  // console.log(airlinesList) // <<<<<<<<<<<<<<<<<<<<<<<
 
 
   return (
     <div className="app">
       <SearchArea
         handleSearchForm={handleSearchForm}
-        airlinesList={airlinesList}
+        airlinesFoundList={airlinesFoundList}
+        airlinesFoundListSort={airlinesFoundListSort}
       />
-      {
-        <CardsArea
-          listForRender={
-            filteredList.length ?
-              filteredList
-              :
-              listForRender
-          }
-          message={message}
-          formData={formData}
-        />
-      }
+      <CardsArea
+        listForRender={listForRender}
+        message={message}
+        sort={sort}
+      />
     </div>
   )
 }

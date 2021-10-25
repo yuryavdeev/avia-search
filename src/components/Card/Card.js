@@ -1,6 +1,6 @@
 import React from 'react'
 import './Card.css'
-import logo from '../../utils/logo.svg'
+import logo from '../../images/logo.svg'
 import { config } from '../../utils/conf'
 import { DateTime } from "luxon"
 
@@ -35,6 +35,7 @@ const Card = React.memo(({ card }) => {
       :
       ''
   const arrivalCityBack = card.flight.legs[1].segments[segmentsBack - 1].arrivalCity.caption
+
   const arrivalAirport = card.flight.legs[0].segments[segments - 1].arrivalAirport.caption
   const arrivalAirportBack = card.flight.legs[1].segments[segmentsBack - 1].arrivalAirport.caption
   const arrivalAirportId = card.flight.legs[0].segments[segments - 1].arrivalAirport.uid
@@ -79,7 +80,7 @@ const Card = React.memo(({ card }) => {
   }, [card])
 
   const handleClickButtonOfCard = () => {
-    // some handler and POST with cardData (query to API)
+    // логика обработки клика и запрос к API
     console.log(card)
   }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import './CardsArea.css'
 import Card from '../Card/Card'
 
-const CardsArea = React.memo(({ listForRender, message, formData }) => {
+const CardsArea = React.memo(({ listForRender, message, sort }) => {
 
   const [cardToRender, setCardToRender] = React.useState([])
   const [buttonVisible, setButtonVisible] = React.useState(true)
@@ -11,50 +11,22 @@ const CardsArea = React.memo(({ listForRender, message, formData }) => {
 
   // сортировка по цене и длительности перелета 
   React.useEffect(() => {
-    if (formData.sort) {
-      switch (formData.sort) {
+    if (sort) {
+      switch (sort) {
         case "priceUp":
-          (listForRender.sort(function (cardLeft, cardRight) {
-            if (Number(cardLeft.flight.price.total.amount) > Number(cardRight.flight.price.total.amount)) {
-              return 1
-            }
-            if (Number(cardLeft.flight.price.total.amount) < Number(cardRight.flight.price.total.amount)) {
-              return -1
-            }
-            // cardLeft === cardRight
-            return 0
-          }))
+          listForRender.sort((cardLeft, cardRight) => Number(cardLeft.flight.price.total.amount) - Number(cardRight.flight.price.total.amount))
           break
-
         case "priceDown":
-          (listForRender.sort(function (cardLeft, cardRight) {
-            if (Number(cardLeft.flight.price.total.amount) < Number(cardRight.flight.price.total.amount)) {
-              return 1
-            }
-            if (Number(cardLeft.flight.price.total.amount) > Number(cardRight.flight.price.total.amount)) {
-              return -1
-            }
-            return 0
-          }))
+          listForRender.sort((cardLeft, cardRight) => Number(cardRight.flight.price.total.amount) - Number(cardLeft.flight.price.total.amount))
           break
-
         case "duration":
-          (listForRender.sort(function (cardLeft, cardRight) {
-            if (Number(cardLeft.flight.legs[0].duration) > Number(cardRight.flight.legs[0].duration)) {
-              return 1
-            }
-            if (Number(cardLeft.flight.legs[0].duration) < Number(cardRight.flight.legs[0].duration)) {
-              return -1
-            }
-            return 0
-          }))
+          listForRender.sort((cardLeft, cardRight) => Number(cardLeft.flight.legs[0].duration) - Number(cardRight.flight.legs[0].duration))
           break
-
         default:
           console.log('Блок поиска "Сортировать" не использовался')
       }
     }
-  }, [formData.sort, listForRender])
+  }, [sort, listForRender])
 
 
   React.useEffect(() => {
@@ -68,7 +40,7 @@ const CardsArea = React.memo(({ listForRender, message, formData }) => {
       )
     )
     listForRender.length <= numbers && setButtonVisible(false)
-  }, [listForRender, numbers, formData.sort])
+  }, [listForRender, numbers, sort])
 
 
   const addCardsToScreen = () => {
