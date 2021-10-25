@@ -20,7 +20,7 @@ const App = () => {
   const [airlinesFoundList, setAirlinesFoundList] = React.useState({})
   const [airlinesCheckedList, setAirlinesCheckedList] = React.useState([])
   const [airlinesActiveList, setAirlinesActiveList] = React.useState([])
-  const [listForChecboxHandle, setListForChecboxHandle] = React.useState([])
+  const [listForCheckboxHandle, setListForCheckboxHandle] = React.useState([])
 
   // поиск
   React.useEffect(() => {
@@ -53,7 +53,7 @@ const App = () => {
       )
     }
 
-    setListForChecboxHandle(temporaryArray)
+    setListForCheckboxHandle(temporaryArray)
 
     // фильтр по авиакомпаниям
     if (airlinesCheckedList.length) {
@@ -97,11 +97,11 @@ const App = () => {
   // обработка disabled для чекбокса с а/к
   React.useEffect(() => {
     // все а/к в listForRender - в Set 
-    let list = new Set(listForChecboxHandle.map(card => card.flight.carrier.caption))
+    let list = new Set(listForCheckboxHandle.map(card => card.flight.carrier.caption))
     // "разность" с airlinesFoundList
     let intersection = Object.keys(airlinesFoundList).filter(x => !list.has(x))
     setAirlinesActiveList(intersection)
-  }, [airlinesFoundList, listForChecboxHandle])
+  }, [airlinesFoundList, listForCheckboxHandle])
 
 
   const handleSearchForm = (formValues, selectedAirlines) => {
