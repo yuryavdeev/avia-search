@@ -2,7 +2,7 @@ import React from 'react'
 import './Card.css'
 import logo from '../../images/logo.svg'
 import { config } from '../../utils/conf'
-import { DateTime } from "luxon"
+import { DateTime } from 'luxon'
 
 
 const Card = React.memo(({ card }) => {

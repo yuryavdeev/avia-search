@@ -19,8 +19,10 @@ const App = () => {
 
   const [airlinesFoundList, setAirlinesFoundList] = React.useState({})
   const [airlinesCheckedList, setAirlinesCheckedList] = React.useState([])
+  const [airlinesActiveList, setAirlinesActiveList] = React.useState([])
+  const [listForChecboxHandle, setListForChecboxHandle] = React.useState([])
 
-
+  // поиск
   React.useEffect(() => {
     let temporaryArray = []
 
@@ -51,6 +53,8 @@ const App = () => {
       )
     }
 
+    setListForChecboxHandle(temporaryArray)
+
     // фильтр по авиакомпаниям
     if (airlinesCheckedList.length) {
       temporaryArray = temporaryArray.filter(card =>
@@ -70,9 +74,8 @@ const App = () => {
       setMessage('Ничего не найдено')
   }, [listForRender])
 
-  const [airlinesFoundListSort, setAirlinesFoundListSort] = React.useState({})
 
-  // получение списка перевозчиков с ценами (для отрисовки в SearchArea)
+  // получение списка а/к с ценами (отрис. в SearchArea)
   React.useEffect(() => {
     let temporaryObject = {}
 
@@ -83,11 +86,22 @@ const App = () => {
       temporaryObject = { ...temporaryObject, [card.flight.carrier.caption]: card.flight.price.total.amount }
     )
 
-    // в объект а/к: цена (без сортировки)
-    setAirlinesFoundList(temporaryObject)
-    // в массив отсортированные по цене а/к
-    setAirlinesFoundListSort(Object.keys(temporaryObject).sort((a, b) => temporaryObject[a] - temporaryObject[b]))
+    // в объект "а/к: цена" (отсорт. по имени а/к - ключу объекта)
+    setAirlinesFoundList(Object.keys(temporaryObject).sort().reduce((obj, key) => {
+      obj[key] = temporaryObject[key]
+      return obj
+    }, {}))
   }, [mainList])
+
+
+  // обработка disabled для чекбокса с а/к
+  React.useEffect(() => {
+    // все а/к в listForRender - в Set 
+    let list = new Set(listForChecboxHandle.map(card => card.flight.carrier.caption))
+    // "разность" с airlinesFoundList
+    let intersection = Object.keys(airlinesFoundList).filter(x => !list.has(x))
+    setAirlinesActiveList(intersection)
+  }, [airlinesFoundList, listForChecboxHandle])
 
 
   const handleSearchForm = (formValues, selectedAirlines) => {
@@ -102,13 +116,12 @@ const App = () => {
   }
 
 
-
   return (
     <div className="app">
       <SearchArea
         handleSearchForm={handleSearchForm}
         airlinesFoundList={airlinesFoundList}
-        airlinesFoundListSort={airlinesFoundListSort}
+        airlinesActiveList={airlinesActiveList}
       />
       <CardsArea
         listForRender={listForRender}

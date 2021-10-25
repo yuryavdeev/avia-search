@@ -2,7 +2,7 @@ import React from 'react'
 import './SearchArea.css'
 
 
-const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesFoundListSort }) => {
+const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesActiveList }) => {
 
   const [formValues, setFormValues] = React.useState({})
   const [selectedAirlines, setSelectedAirlines] = React.useState([])
@@ -20,19 +20,19 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesFo
     const name = e.target.name
     const value = e.target.value
     switch (name) {
-      case "transferFlight":
+      case 'transferFlight':
         setFormValues({ ...formValues, [name]: !checkboxTransfer })
         setCheckboxTransfer(!checkboxTransfer)
         break
-      case "directFlight":
+      case 'directFlight':
         setFormValues({ ...formValues, [name]: !checkboxDirect })
         setCheckboxDirect(!checkboxDirect)
         break
-      case "priceFrom":
+      case 'priceFrom':
         setFormValues({ ...formValues, [name]: value })
         setInputPriceFrom(value)
         break
-      case "priceBefore":
+      case 'priceBefore':
         setFormValues({ ...formValues, [name]: value })
         setInputPriceBefore(value)
         break
@@ -132,17 +132,18 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesFo
         </fieldset>
 
         {
-          airlinesFoundList && airlinesFoundListSort.length &&
+          airlinesFoundList &&
           <fieldset className="form__set form__airlines" onChange={handleChangeAirlinesCheckbox}>
             <h3 className="form__subtitle">Авиакомпании</h3>
             {
-              airlinesFoundListSort.map((airline) =>
-                <div className="form__input-container" key={airline}>
+              Object.keys(airlinesFoundList).map((airline) =>
+                <div className="form__input-container" key={airline} >
                   <input
                     type="checkbox"
                     id={airline}
                     name={airline}
                     value={airline}
+                    disabled={airlinesActiveList.includes(airline)}
                   />
                   <label className="form__label" htmlFor={airline}>{airline}</label>
                   <span className="form__min-price-span">от {airlinesFoundList[airline]} р.</span><br />

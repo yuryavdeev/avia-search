@@ -13,13 +13,13 @@ const CardsArea = React.memo(({ listForRender, message, sort }) => {
   React.useEffect(() => {
     if (sort) {
       switch (sort) {
-        case "priceUp":
+        case 'priceUp':
           listForRender.sort((cardLeft, cardRight) => Number(cardLeft.flight.price.total.amount) - Number(cardRight.flight.price.total.amount))
           break
-        case "priceDown":
+        case 'priceDown':
           listForRender.sort((cardLeft, cardRight) => Number(cardRight.flight.price.total.amount) - Number(cardLeft.flight.price.total.amount))
           break
-        case "duration":
+        case 'duration':
           listForRender.sort((cardLeft, cardRight) => Number(cardLeft.flight.legs[0].duration) - Number(cardRight.flight.legs[0].duration))
           break
         default:
@@ -54,12 +54,12 @@ const CardsArea = React.memo(({ listForRender, message, sort }) => {
         message ?
           <p className="cards-area__message">{message}</p>
           :
-          <div className='cards-area__flex'>{cardToRender}</div>
+          <div className="cards-area__flex">{cardToRender}</div>
       }
       {
         buttonVisible &&
         !message &&
-        <button className='cards-area__button' onClick={addCardsToScreen}>Показать ещё</button>
+        <button className="cards-area__button" onClick={addCardsToScreen}>Показать ещё</button>
       }
     </section>
   )
