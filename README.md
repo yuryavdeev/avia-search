@@ -1,3 +1,3 @@
-# Приложение для подбора удобного авиаперелета
+# Приложение для подбора удобного авиаперелета - avia-search  
 
-# avia-search
+https://yuryavdeev.github.io/avia-search
