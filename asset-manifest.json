@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.5708b22d.chunk.css",
-    "main.js": "/static/js/main.97dcf02c.chunk.js",
-    "main.js.map": "/static/js/main.97dcf02c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8e52ed0a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8e52ed0a.js.map",
-    "static/js/2.f2bbe222.chunk.js": "/static/js/2.f2bbe222.chunk.js",
-    "static/js/2.f2bbe222.chunk.js.map": "/static/js/2.f2bbe222.chunk.js.map",
-    "static/js/3.c2082ed5.chunk.js": "/static/js/3.c2082ed5.chunk.js",
-    "static/js/3.c2082ed5.chunk.js.map": "/static/js/3.c2082ed5.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.5708b22d.chunk.css.map": "/static/css/main.5708b22d.chunk.css.map",
-    "static/js/2.f2bbe222.chunk.js.LICENSE.txt": "/static/js/2.f2bbe222.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/Inter-Regular.e148c4a1.woff",
-    "static/media/logo.e01f0b9e.svg": "/static/media/logo.e01f0b9e.svg"
+    "main.css": "/avia-search/static/css/main.60c13b61.chunk.css",
+    "main.js": "/avia-search/static/js/main.be15b9fd.chunk.js",
+    "main.js.map": "/avia-search/static/js/main.be15b9fd.chunk.js.map",
+    "runtime-main.js": "/avia-search/static/js/runtime-main.45ff7fa8.js",
+    "runtime-main.js.map": "/avia-search/static/js/runtime-main.45ff7fa8.js.map",
+    "static/js/2.431739ce.chunk.js": "/avia-search/static/js/2.431739ce.chunk.js",
+    "static/js/2.431739ce.chunk.js.map": "/avia-search/static/js/2.431739ce.chunk.js.map",
+    "static/js/3.ef8668a0.chunk.js": "/avia-search/static/js/3.ef8668a0.chunk.js",
+    "static/js/3.ef8668a0.chunk.js.map": "/avia-search/static/js/3.ef8668a0.chunk.js.map",
+    "index.html": "/avia-search/index.html",
+    "static/css/main.60c13b61.chunk.css.map": "/avia-search/static/css/main.60c13b61.chunk.css.map",
+    "static/js/2.431739ce.chunk.js.LICENSE.txt": "/avia-search/static/js/2.431739ce.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/avia-search/static/media/Inter-Regular.e148c4a1.woff",
+    "static/media/logo.e01f0b9e.svg": "/avia-search/static/media/logo.e01f0b9e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8e52ed0a.js",
-    "static/js/2.f2bbe222.chunk.js",
-    "static/css/main.5708b22d.chunk.css",
-    "static/js/main.97dcf02c.chunk.js"
+    "static/js/runtime-main.45ff7fa8.js",
+    "static/js/2.431739ce.chunk.js",
+    "static/css/main.60c13b61.chunk.css",
+    "static/js/main.be15b9fd.chunk.js"
   ]
 }
