@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/avia-search/static/css/main.60c13b61.chunk.css",
-    "main.js": "/avia-search/static/js/main.be15b9fd.chunk.js",
-    "main.js.map": "/avia-search/static/js/main.be15b9fd.chunk.js.map",
+    "main.css": "/avia-search/static/css/main.bb0054a2.chunk.css",
+    "main.js": "/avia-search/static/js/main.b50054ca.chunk.js",
+    "main.js.map": "/avia-search/static/js/main.b50054ca.chunk.js.map",
     "runtime-main.js": "/avia-search/static/js/runtime-main.45ff7fa8.js",
     "runtime-main.js.map": "/avia-search/static/js/runtime-main.45ff7fa8.js.map",
-    "static/js/2.431739ce.chunk.js": "/avia-search/static/js/2.431739ce.chunk.js",
-    "static/js/2.431739ce.chunk.js.map": "/avia-search/static/js/2.431739ce.chunk.js.map",
+    "static/js/2.3d85d405.chunk.js": "/avia-search/static/js/2.3d85d405.chunk.js",
+    "static/js/2.3d85d405.chunk.js.map": "/avia-search/static/js/2.3d85d405.chunk.js.map",
     "static/js/3.ef8668a0.chunk.js": "/avia-search/static/js/3.ef8668a0.chunk.js",
     "static/js/3.ef8668a0.chunk.js.map": "/avia-search/static/js/3.ef8668a0.chunk.js.map",
     "index.html": "/avia-search/index.html",
-    "static/css/main.60c13b61.chunk.css.map": "/avia-search/static/css/main.60c13b61.chunk.css.map",
-    "static/js/2.431739ce.chunk.js.LICENSE.txt": "/avia-search/static/js/2.431739ce.chunk.js.LICENSE.txt",
+    "static/css/main.bb0054a2.chunk.css.map": "/avia-search/static/css/main.bb0054a2.chunk.css.map",
+    "static/js/2.3d85d405.chunk.js.LICENSE.txt": "/avia-search/static/js/2.3d85d405.chunk.js.LICENSE.txt",
     "static/media/index.css": "/avia-search/static/media/Inter-Regular.e148c4a1.woff",
     "static/media/logo.e01f0b9e.svg": "/avia-search/static/media/logo.e01f0b9e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.45ff7fa8.js",
-    "static/js/2.431739ce.chunk.js",
-    "static/css/main.60c13b61.chunk.css",
-    "static/js/main.be15b9fd.chunk.js"
+    "static/js/2.3d85d405.chunk.js",
+    "static/css/main.bb0054a2.chunk.css",
+    "static/js/main.b50054ca.chunk.js"
   ]
 }
