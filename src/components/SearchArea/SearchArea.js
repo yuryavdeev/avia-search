@@ -58,7 +58,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
     <section className="search-area">
       <form className="form">
 
-        <fieldset className="form__set form__sort" onChange={handleChangeForm}>
+        <fieldset className="form__set" onChange={handleChangeForm}>
           <h3 className="form__subtitle">Сортировать</h3>
           <input
             type="radio"
@@ -84,7 +84,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
         </fieldset>
 
 
-        <fieldset className="form__set form__filter" onChange={handleChangeForm}>
+        <fieldset className="form__set" onChange={handleChangeForm}>
           <h3 className="form__subtitle">Фильтровать</h3>
           <input
             type="checkbox"
@@ -103,7 +103,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
         </fieldset>
 
 
-        <fieldset className="form__set form__price" >
+        <fieldset className="form__set" >
           <h3 className="form__subtitle">Цена</h3>
           <label className="form__label" htmlFor="from">От</label>
           <input
@@ -111,7 +111,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
             type="number"
             id="from"
             name="priceFrom"
-            placeholder="введите сумму от ..."
+            placeholder=" ₽"
             onChange={handleChangeForm}
             value={inputPriceFrom}
             title="поле может содержать только цифры"
@@ -123,7 +123,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
             type="number"
             id="before"
             name="priceBefore"
-            placeholder="введите сумму до ..."
+            placeholder=" ₽"
             onChange={handleChangeForm}
             value={inputPriceBefore}
             title="поле может содержать только цифры"
@@ -133,7 +133,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
 
         {
           airlinesFoundList &&
-          <fieldset className="form__set form__airlines" onChange={handleChangeAirlinesCheckbox}>
+          <fieldset className="form__set" onChange={handleChangeAirlinesCheckbox}>
             <h3 className="form__subtitle">Авиакомпании</h3>
             {
               Object.keys(airlinesFoundList).map((airline) =>

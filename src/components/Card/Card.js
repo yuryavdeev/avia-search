@@ -10,9 +10,19 @@ const Card = React.memo(({ card }) => {
   const segments = card.flight.legs[0].segments.length
   const segmentsBack = card.flight.legs[1].segments.length
 
-  const airline = card.flight.carrier.caption
+  // const airline = card.flight.carrier.caption
+  const airline = card.flight.legs[0].segments[0].airline.caption
+  const airlineNext =
+    card.flight.legs[0].segments[1] ?
+      card.flight.legs[0].segments[1].airline.caption
+      :
+      ''
   const airlineBack = card.flight.legs[1].segments[0].airline.caption
-
+  const airlineNextBack =
+    card.flight.legs[1].segments[1] ?
+      card.flight.legs[1].segments[1].airline.caption
+      :
+      ''
   const departureDate = card.flight.legs[0].segments[0].departureDate
   const arrivalDate = card.flight.legs[0].segments[segments - 1].arrivalDate
   const departureDateBack = card.flight.legs[1].segments[0].departureDate
@@ -124,7 +134,11 @@ const Card = React.memo(({ card }) => {
             }
             <hr className="card__list-border-line"></hr>
           </div>
-          <p className="card__list-carrier">Рейс выполняет: {airline}</p>
+          { !airlineNext || airlineNext === airline?
+            <p className="card__list-carrier">Рейс выполняет: {airline}</p>
+            :
+            <p className="card__list-carrier">Рейс выполняет: {airline + ', ' + airlineNext}</p>
+          }
         </li>
 
         <li className="card__list-item">
@@ -156,7 +170,11 @@ const Card = React.memo(({ card }) => {
             }
             <hr className="card__list-border-line"></hr>
           </div>
-          <p className="card__list-carrier">Рейс выполняет: {airlineBack}</p>
+          { !airlineNextBack || airlineNextBack === airlineBack?
+            <p className="card__list-carrier">Рейс выполняет: {airlineBack}</p>
+            :
+            <p className="card__list-carrier">Рейс выполняет: {airlineBack + ', ' + airlineNextBack}</p>
+          }
         </li>
       </ul>
 

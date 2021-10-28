@@ -7,7 +7,7 @@ import flightsList from '../../utils/flights.json'
 
 const App = () => {
 
-  const mainList = flightsList.result.flights
+  // const flightsList = flightsList
   const [listForRender, setListForRender] = React.useState([])
   const [message, setMessage] = React.useState('')
 
@@ -22,12 +22,14 @@ const App = () => {
   const [airlinesActiveList, setAirlinesActiveList] = React.useState([])
   const [listForCheckboxHandle, setListForCheckboxHandle] = React.useState([])
 
+  console.log(JSON.stringify(flightsList.length))
+
   // поиск
   React.useEffect(() => {
     let temporaryArray = []
 
     // фильтр по цене (и установка начального списка для отрисовки <= нет условия)
-    temporaryArray = mainList.filter(card =>
+    temporaryArray = flightsList.filter(card =>
       priceFrom && priceBefore ?
         card.flight.price.total.amount < Number(priceBefore) && card.flight.price.total.amount > Number(priceFrom)
         :
@@ -63,7 +65,7 @@ const App = () => {
     }
 
     setListForRender(temporaryArray)
-  }, [mainList, priceBefore, priceFrom, transferFlight, directFlight, airlinesCheckedList])
+  }, [priceBefore, priceFrom, transferFlight, directFlight, airlinesCheckedList])
 
 
   // переключатель сообщения
@@ -80,7 +82,7 @@ const App = () => {
     let temporaryObject = {}
 
     // сортировка <= получить мин. цену в объект
-    mainList.sort((cardLeft, cardRight) =>
+    flightsList.sort((cardLeft, cardRight) =>
       Number(cardRight.flight.price.total.amount) - Number(cardLeft.flight.price.total.amount)
     ).map(card =>
       temporaryObject = { ...temporaryObject, [card.flight.carrier.caption]: card.flight.price.total.amount }
@@ -91,7 +93,7 @@ const App = () => {
       obj[key] = temporaryObject[key]
       return obj
     }, {}))
-  }, [mainList])
+  }, [])
 
 
   // обработка disabled для чекбокса с а/к

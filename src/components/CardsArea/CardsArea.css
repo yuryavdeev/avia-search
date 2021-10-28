@@ -9,9 +9,9 @@
 
 .cards-area__message {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.1;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 
 .cards-area__flex {
