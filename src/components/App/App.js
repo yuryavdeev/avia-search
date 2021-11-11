@@ -100,7 +100,7 @@ const App = () => {
     // все а/к в listForRender - в Set 
     let list = new Set(listForCheckboxHandle.map(card => card.flight.carrier.caption))
     // "разность" с airlinesFoundList
-    let intersection = Object.keys(airlinesFoundList).filter(x => !list.has(x))
+    let intersection = Object.keys(airlinesFoundList).filter(i => !list.has(i))
     setAirlinesActiveList(intersection)
   }, [airlinesFoundList, listForCheckboxHandle])
 
