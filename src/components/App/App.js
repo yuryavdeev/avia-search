@@ -22,7 +22,6 @@ const App = () => {
   const [airlinesActiveList, setAirlinesActiveList] = React.useState([])
   const [listForCheckboxHandle, setListForCheckboxHandle] = React.useState([])
 
-  console.log(JSON.stringify(flightsList.length))
 
   // поиск
   React.useEffect(() => {
