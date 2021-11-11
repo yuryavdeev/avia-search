@@ -7,7 +7,6 @@ import flightsList from '../../utils/flights.json'
 
 const App = () => {
 
-  // const flightsList = flightsList
   const [listForRender, setListForRender] = React.useState([])
   const [message, setMessage] = React.useState('')
 
@@ -97,7 +96,7 @@ const App = () => {
 
   // обработка disabled для чекбокса с а/к
   React.useEffect(() => {
-    // все а/к в listForRender - в Set 
+    // все а/к из listForRender - в Set 
     let list = new Set(listForCheckboxHandle.map(card => card.flight.carrier.caption))
     // "разность" с airlinesFoundList
     let intersection = Object.keys(airlinesFoundList).filter(i => !list.has(i))
