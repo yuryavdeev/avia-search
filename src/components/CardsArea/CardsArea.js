@@ -14,13 +14,16 @@ const CardsArea = React.memo(({ listForRender, message, sort }) => {
     if (sort) {
       switch (sort) {
         case 'priceUp':
-          listForRender.sort((cardLeft, cardRight) => Number(cardLeft.flight.price.total.amount) - Number(cardRight.flight.price.total.amount))
+          listForRender.sort((cardLeft, cardRight) =>
+            Number(cardLeft.flight.price.total.amount) - Number(cardRight.flight.price.total.amount))
           break
         case 'priceDown':
-          listForRender.sort((cardLeft, cardRight) => Number(cardRight.flight.price.total.amount) - Number(cardLeft.flight.price.total.amount))
+          listForRender.sort((cardLeft, cardRight) =>
+            Number(cardRight.flight.price.total.amount) - Number(cardLeft.flight.price.total.amount))
           break
         case 'duration':
-          listForRender.sort((cardLeft, cardRight) => Number(cardLeft.flight.legs[0].duration) - Number(cardRight.flight.legs[0].duration))
+          listForRender.sort((cardLeft, cardRight) =>
+            Number(cardLeft.flight.legs[0].duration) - Number(cardRight.flight.legs[0].duration))
           break
         default:
           console.log('Блок поиска "Сортировать" не использовался')

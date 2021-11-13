@@ -13,7 +13,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
 
   React.useEffect(() => {
     handleSearchForm(formValues, selectedAirlines)
-  }, [handleSearchForm, selectedAirlines, formValues])
+  }, [handleSearchForm, formValues, selectedAirlines])
 
 
   const handleChangeForm = (e) => {

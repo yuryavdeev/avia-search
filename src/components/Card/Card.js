@@ -10,7 +10,6 @@ const Card = React.memo(({ card }) => {
   const segments = card.flight.legs[0].segments.length
   const segmentsBack = card.flight.legs[1].segments.length
 
-  // const airline = card.flight.carrier.caption
   const airline = card.flight.legs[0].segments[0].airline.caption
   const airlineNext =
     card.flight.legs[0].segments[1] ?
