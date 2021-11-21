@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/avia-search/static/css/main.4731a38e.chunk.css",
-    "main.js": "/avia-search/static/js/main.cef623db.chunk.js",
-    "main.js.map": "/avia-search/static/js/main.cef623db.chunk.js.map",
+    "main.css": "/avia-search/static/css/main.3efd3de6.chunk.css",
+    "main.js": "/avia-search/static/js/main.46372a38.chunk.js",
+    "main.js.map": "/avia-search/static/js/main.46372a38.chunk.js.map",
     "runtime-main.js": "/avia-search/static/js/runtime-main.45ff7fa8.js",
     "runtime-main.js.map": "/avia-search/static/js/runtime-main.45ff7fa8.js.map",
     "static/js/2.431739ce.chunk.js": "/avia-search/static/js/2.431739ce.chunk.js",
@@ -10,15 +10,15 @@
     "static/js/3.ef8668a0.chunk.js": "/avia-search/static/js/3.ef8668a0.chunk.js",
     "static/js/3.ef8668a0.chunk.js.map": "/avia-search/static/js/3.ef8668a0.chunk.js.map",
     "index.html": "/avia-search/index.html",
-    "static/css/main.4731a38e.chunk.css.map": "/avia-search/static/css/main.4731a38e.chunk.css.map",
+    "static/css/main.3efd3de6.chunk.css.map": "/avia-search/static/css/main.3efd3de6.chunk.css.map",
     "static/js/2.431739ce.chunk.js.LICENSE.txt": "/avia-search/static/js/2.431739ce.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/avia-search/static/media/Inter-Regular.e148c4a1.woff",
+    "static/media/index.scss": "/avia-search/static/media/Inter-Regular.e148c4a1.woff",
     "static/media/logo.1e029571.svg": "/avia-search/static/media/logo.1e029571.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.45ff7fa8.js",
     "static/js/2.431739ce.chunk.js",
-    "static/css/main.4731a38e.chunk.css",
-    "static/js/main.cef623db.chunk.js"
+    "static/css/main.3efd3de6.chunk.css",
+    "static/js/main.46372a38.chunk.js"
   ]
 }
