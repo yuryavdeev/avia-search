@@ -14,6 +14,6 @@ https://yuryavdeev.github.io/avia-search
 
 ## Технологии            
 - React    
-- CSS3    
+- SCSS   
 - БЭМ    
 - JSX    

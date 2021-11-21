@@ -1,5 +1,11 @@
+@import '../../utils/var.scss';
+
+* {
+  box-sizing: border-box;
+}
+
 .app {
-  width:100%;
+  width: $base-width;
   max-width: 1280px;
   min-height: 100vh;
   display: flex;

@@ -1,0 +1,22 @@
+$base-width: 100%;
+$base-height: 65px;
+
+$b-color: #fafafa;
+
+
+$grey-color: #ccc;
+$blue-color: rgb(45, 140, 218);
+$orange-color: rgb(226, 167, 58);
+
+@mixin hover($opacity, $delay) {
+  opacity: $opacity;
+  transition: opacity linear #{$delay}; // #{$delay} - ? - т.к. не одно св-во, передал строкой
+}
+
+// расширение/наследование - ч/з директиву @extend м. наследовать наборы свойств CSS от одного селектора другому
+%focus {
+  outline: none;
+  box-shadow: 0 0 0 25px #fff inset;
+}
+
+

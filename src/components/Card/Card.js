@@ -1,5 +1,5 @@
 import React from 'react'
-import './Card.css'
+import './Card.scss'
 import logo from '../../images/logo.svg'
 import { config } from '../../utils/conf'
 import { DateTime } from 'luxon'

@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
 import SearchArea from '../SearchArea/SearchArea'
 import CardsArea from '../CardsArea/CardsArea'
 import flightsList from '../../utils/flights.json'
@@ -102,12 +102,12 @@ const App = () => {
     let list = new Set(
       listForCheckboxHandle.map((card) => card.flight.carrier.caption)
     )
-    console.log(list)
+    // console.log(list)
     // "разность" с airlinesFoundList
     let intersection = Object.keys(airlinesFoundList)
       .filter((i) => !list.has(i)
       )
-    console.log(intersection)
+    // console.log(intersection)
 
     setAirlinesActiveList(intersection)
   }, [airlinesFoundList, listForCheckboxHandle])
@@ -137,8 +137,13 @@ const App = () => {
         handleSearchForm={handleSearchForm}
         airlinesFoundList={airlinesFoundList}
         airlinesActiveList={airlinesActiveList}
+        message={message}
       />
-      <CardsArea listForRender={listForRender} message={message} sort={sort} />
+      <CardsArea
+        listForRender={listForRender}
+        message={message}
+        sort={sort}
+      />
     </div>
   )
 }

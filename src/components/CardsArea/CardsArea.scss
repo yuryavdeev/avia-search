@@ -1,0 +1,45 @@
+@import '../../utils/var.scss';
+
+// переменная ниже - подставновка - #{...} - лучше для модификаторов (тут для примера)
+$container: '.cards-area';
+
+#{$container} {
+  margin: 30px 20px 60px;
+  width: calc(75% - 40px);
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+#{$container}__message {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  margin: 30px auto;
+}
+
+#{$container}__flex {
+  display: flex;
+  flex-direction: column;
+  width: $base-width;
+}
+
+#{$container}__button {
+  width: 35%;
+  height: $base-height * .6;
+  margin: auto;
+  background-color: $grey-color;
+  color: #007;
+  border: 1px solid $blue-color;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  cursor: pointer;
+
+  &:hover {
+    // применил миксин, .6, '.3s' - передал аргументы (<= @mixin hover($opacity, $delay) {...})
+    @include hover(.7, '.3s');
+  }
+}

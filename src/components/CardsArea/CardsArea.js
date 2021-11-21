@@ -1,5 +1,5 @@
 import React from 'react'
-import './CardsArea.css'
+import './CardsArea.scss'
 import Card from '../Card/Card'
 
 const CardsArea = React.memo(({ listForRender, message, sort }) => {

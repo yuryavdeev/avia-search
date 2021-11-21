@@ -1,8 +1,8 @@
 import React from 'react'
-import './SearchArea.css'
+import './SearchArea.scss'
 
 
-const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesActiveList }) => {
+const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesActiveList, message }) => {
 
   const [formValues, setFormValues] = React.useState({})
   const [selectedAirlines, setSelectedAirlines] = React.useState([])
@@ -107,7 +107,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
           <h3 className="form__subtitle">Цена</h3>
           <label className="form__label" htmlFor="from">От</label>
           <input
-            className="form__input"
+            className={`form__input ${message && "form__input_error"}`}
             type="number"
             id="from"
             name="priceFrom"
@@ -119,7 +119,7 @@ const SearchArea = React.memo(({ handleSearchForm, airlinesFoundList, airlinesAc
           <br />
           <label className="form__label" htmlFor="before">До</label>
           <input
-            className="form__input"
+            className={`form__input ${message && "form__input_error"}`}
             type="number"
             id="before"
             name="priceBefore"
