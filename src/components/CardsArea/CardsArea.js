@@ -62,7 +62,7 @@ const CardsArea = React.memo(({ listForRender, message, sort }) => {
       {
         buttonVisible &&
         !message &&
-        <button className="cards-area__button" onClick={addCardsToScreen}>Показать ещё</button>
+        <button className="cards-area__button" onClick={addCardsToScreen}>ПОКАЗАТЬ ЕЩЁ</button>
       }
     </section>
   )

@@ -26,20 +26,19 @@ $container: '.cards-area';
 }
 
 #{$container}__button {
-  width: 35%;
+  width: 100%;
   height: $base-height * .6;
-  margin: auto;
-  background-color: $grey-color;
-  color: #007;
-  border: 1px solid $blue-color;
-  border-radius: 2px;
+  background-color: rgba(0, 128, 0, 0.15);
+  color: rgb(0, 0, 70);
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 6px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.1;
   cursor: pointer;
 
   &:hover {
     // применил миксин, .6, '.3s' - передал аргументы (<= @mixin hover($opacity, $delay) {...})
-    @include hover(.7, '.3s');
+    @include hover(.8, '.3s');
   }
 }
