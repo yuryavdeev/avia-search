@@ -1,19 +1,19 @@
-# Страница с результатом поиска авиаперелётов - avia-search  
+# Flight search result page - avia-search  
 
 https://yuryavdeev.github.io/avia-search  
 
-Страница с отображением результата подбора авиаперелётов и их фильтрацией (в десктопном разрешении).    
-Фильтрация происходит при любом изменении состояния в блоке фильтров.
+Page showing the result of the selection of flights and their filtering (in desktop resolution).
+Filtering occurs on any state change in the filter block.     
 
-## Функциональность    
-- сортировка результата по цене, продолжительности полёта,    
-- фильтр по количеству сегментов при перелёте "туда",    
-- фильтр по цене перелёта от... до...,    
-- фильтр по авиакомпании-перевозчику,    
-- отображение следующих 2-х вариантов перелёта при нажатии кнопи "Показать ещё".
+## Functionality    
+- sorting the result by price, flight duration,   
+- filter by the number of segments when flying "there",    
+- filter by flight price from... to...,    
+- carrier filter,    
+- displaying the following 2 flight options when you press the "Show more" button.    
 
-## Технологии            
+## Technology            
 - React    
 - SCSS   
-- БЭМ    
+- BEM    
 - JSX    
